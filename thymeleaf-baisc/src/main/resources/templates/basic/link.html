@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>URL 링크</h1>
+<ul>
+  <li><a th:href="@{/hello}">basic url</a></li>
+  <li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">hello query param</a></li>
+<!--  http://localhost:8080/hello?param1=data1&param2=data2-->
+  <li><a th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path variable</a></li>
+<!--  http://localhost:8080/hello/{param1}/{param2} 이 아래로 대입되어 나타남.-->
+<!--  http://localhost:8080/hello/data1/data2-->
+  <li><a th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path variable + query parameter</a></li>
+<!--  http://localhost:8080/hello/data1?param2=data2 들어갈 곳이 없는 param2는 뒤에 그대로 파람으로 들어감-->
+<!--  ()이 param 값, {attribute name} => {attribute value}가 들어감-->
+</ul>
+</body>
+</html>
