@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>부분 포함</h1>
+<h2>부분 포함 insert</h2>
+<div th:insert="~{template/fragment/footer :: copy}"></div>
+<!--footer의 copy란 이름의 블록을 div 태그 안에 푸터 블록을 불러와서 집어넣은것.-->
+<h2>부분 포함 replace</h2>
+<div th:replace="~{template/fragment/footer :: copy}"></div>
+<!--해당 div를 footer 블록으로 대체-->
+<h2>부분 포함 단순 표현식</h2>
+<div th:replace="template/fragment/footer :: copy"></div>
+<!--{...} 를 사용하는 것이 원칙이지만 템플릿 조각을 사용하는 코드가 단순하면 이 부분을 생략할 수 있다-->
+<h1>파라미터 사용</h1>
+<div th:replace="~{template/fragment/footer :: copyParam ('데이터1', '데이터2')}"></div>
+</body>
+</html>
