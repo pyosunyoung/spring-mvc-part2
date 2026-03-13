@@ -40,6 +40,51 @@
 
     <hr class="my-4">
 
+    <!-- single checkbox -->
+    <div>판매 여부</div>
+    <div>
+        <div class="form-check">
+            <input type="checkbox" id="open" th:field="${item.open}" class="form-check-input" disabled>
+<!--            th object가 없어서 ${item.open}으로 적용 *이거 대신. 값이 참이면 checked를 넣고 아니면 안넣음. checked 존재 유무에 따라 체크박스 체크 되어지잖아?-->
+            <label for="open" class="form-check-label">판매 오픈</label>
+        </div>
+    </div>
+
+    <!-- multi checkbox -->
+    <div>
+        <div>등록 지역</div>
+        <div th:each="region : ${regions}" class="form-check form-check-inline">
+            <input type="checkbox" th:field="${item.regions}" th:value="${region.key}" class="form-check-input" disabled>
+<!--            item.regions에 서울 부산 이런게 들어가있음. 그리고 각 루프를 돌 때 마다 region.key와 field 리스트와 비교해서 해당 값이 있으면 타임리프가 checked를 넣어주는 것-->
+            <label th:for="${#ids.prev('regions')}"
+                   th:text="${region.value}" class="form-check-label">서울</label>
+        </div>
+    </div>
+
+    <!-- radio button -->
+    <div>
+        <div>상품 종류</div>
+        <div th:each="type : ${itemTypes}" class="form-check form-check-inline">
+            <input type="radio" th:field="${item.itemType}" th:value="${type.name()}" class="form-check-input" disabled>
+            <label th:for="${#ids.prev('itemType')}" th:text="${type.description}"
+                   class="form-check-label">
+                BOOK
+            </label>
+        </div>
+    </div>
+
+    <!-- SELECT -->
+    <div>
+        <div>배송 방식</div>
+        <select th:field="${item.deliveryCode}" class="form-select" disabled>
+            <option value="">==배송 방식 선택==</option>
+            <option th:each="deliveryCode : ${deliveryCodes}" th:value="${deliveryCode.code}"
+                    th:text="${deliveryCode.displayName}">FAST</option>
+        </select>
+    </div>
+    <hr class="my-4">
+
+
     <div class="row">
         <div class="col">
             <button class="w-100 btn btn-primary btn-lg"
