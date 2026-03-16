@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/message/items")
 @RequiredArgsConstructor
 public class MessageItemController {
-
+    
     private final ItemRepository itemRepository;
 
     @GetMapping
@@ -23,6 +23,7 @@ public class MessageItemController {
         model.addAttribute("items", items);
         return "message/items";
     }
+
 
     @GetMapping("/{itemId}")
     public String item(@PathVariable long itemId, Model model) {
