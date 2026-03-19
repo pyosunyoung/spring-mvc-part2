@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -45,7 +47,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/")
+//    @GetMapping("/")
     public String homeLoginV2(HttpServletRequest request, Model model) {
 
         //세션 관리자에 저장된 회원 정보를 조회
@@ -58,6 +60,44 @@ public class HomeController {
 
         //로그인 전용 사용자 홈.
         model.addAttribute("member",member);
+        return "loginHome";
+
+    }
+
+//    @GetMapping("/")
+    public String homeLoginV3(HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession(false);// 세션을 생성할 필요가 없기 때문에 false
+        if (session == null) {
+            return "home";
+        }
+        Object loginMember = session.getAttribute(SessionConst.LOGIN_MEMBER);
+
+
+        //세션에 회원 데이터가 없으면 Home
+        if(loginMember==null){
+            return "home";
+        }
+
+        //세션이 유지되면 로그인으로 이동.
+        model.addAttribute("member",loginMember);
+        return "loginHome";
+
+    }
+
+    @GetMapping("/")
+    public String homeLoginV3Spring(
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        //세션 attribute 존재 여부 간결화 후 넘겨줌 loginMember에 넣어서
+        //즉 이미 로그인된 사용자를 찾을 때는 다음과 같이 사용하면됨. 하지만 이 기능은 세션을 생성하진 않음
+
+        //세션에 회원 데이터가 없으면 Home
+        if(loginMember==null){
+            return "home";
+        }
+
+        //세션이 유지되면 로그인으로 이동.
+        model.addAttribute("member",loginMember);
         return "loginHome";
 
     }
