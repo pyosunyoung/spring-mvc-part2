@@ -1,5 +1,6 @@
 package hello.typeconverter.controller;
 
+import hello.typeconverter.type.IpPort;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +17,16 @@ public class HelloController {
         return "ok!";
     }
 
-    @GetMapping("/hello-v2")
+    @GetMapping("/hello-v2") // "10,000"문자로 넘어가면 예를 들어 /hello-v2?data=10,000면 data는 10000숫자로 출력됨.
     public String helloV2(@RequestParam Integer data) {
         System.out.println("data = " + data);
         return "ok!";
+    }
+
+    @GetMapping("/ip-port")
+    public String ipPort(@RequestParam IpPort ipPort) {
+        System.out.println("ipPort IP = " + ipPort.getIp());
+        System.out.println("ipPort PORT = " + ipPort.getPort());
+        return "ok";
     }
 }
