@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="895c6f0f-416c-4e3d-ac65-90bbce8fd329" name="변경" comment="" />
+    <list default="true" id="895c6f0f-416c-4e3d-ac65-90bbce8fd329" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +36,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3BA3eXndWBkNSl7nCFMOLEUkGNk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -78,6 +83,8 @@
       <workItem from="1774255600300" duration="237000" />
       <workItem from="1774343379732" duration="93000" />
       <workItem from="1774429798033" duration="99000" />
+      <workItem from="1774513676564" duration="1281000" />
+      <workItem from="1774574257014" duration="1942000" />
     </task>
     <servers />
   </component>
